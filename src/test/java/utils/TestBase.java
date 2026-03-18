@@ -13,6 +13,6 @@ public class TestBase {
         driver = Driver.getDriver();}
     @AfterMethod
     public void teardown(){
-       // driver.quit();
+        driver.quit();
     }
 }
