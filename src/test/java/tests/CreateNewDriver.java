@@ -172,4 +172,40 @@ public class CreateNewDriver extends TestBase {
         String actualResult = driver.findElement(By.xpath("//input[@name='full_name']/../following-sibling::p")).getText();
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    @Test
+    public void createDriverLocalTestPositive() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+        driver.findElement(By.name("is_local")).click();
+        driver.findElement(By.xpath("//div[@role='combobox']")).click();
+        String selectedState = "NY";
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//li[@data-value='" + selectedState + "']")).click();
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/main/div[2]/div/div/div/form/div[19]/button")).click();
+        driver.findElement(By.xpath("//button[text()='Go to Edit']")).click();
+        // Get Driver ID
+        String driverId = driver.findElement(By.xpath("//label[text()='Manual id']/following-sibling::div/input")).getAttribute("value");
+        driver.findElement(By.xpath("//button[text()='Back to list']")).click();
+        // Search for driver with ID
+        driver.findElement(By.xpath("//label[text()='Search...']/following-sibling::div/input")).sendKeys(driverId + Keys.ENTER);
+        // Click on non staff result
+        driver.findElement(By.xpath("//div[text()='Non staff']")).click();
+        // Getting driver id from search result
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//div[@data-field='driver_number']/a")).click();
+        String actualSelectedState = driver.findElement(By.xpath("//label[text()='Local state *']/following-sibling::div/div")).getText();
+        Assert.assertEquals(actualSelectedState, selectedState);
+    }
 }
