@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.CommonMethods;
 import utils.ConfigReader;
 import utils.TestBase;
 
@@ -207,5 +208,75 @@ public class CreateNewDriver extends TestBase {
         driver.findElement(By.xpath("//div[@data-field='driver_number']/a")).click();
         String actualSelectedState = driver.findElement(By.xpath("//label[text()='Local state *']/following-sibling::div/div")).getText();
         Assert.assertEquals(actualSelectedState, selectedState);
+    }
+    @Test
+    public void createDriverPhoneTestPositive() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+        driver.findElement(By.xpath("//p[text()='Phone']/following-sibling::*[1]")).click();
+        String phoneNumber=CommonMethods.generatePhoneNumber();
+        driver.findElement(By.xpath("//input[@type='tel']")).sendKeys(phoneNumber);
+        driver.findElement(By.xpath("//input[@type='string']")).sendKeys("256");
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//button[text()='Create new']")).click();
+        driver.findElement(By.xpath("//button[text()='Go to Edit']")).click();
+        String extPhone = driver.findElement(By.xpath("//input[@placeholder='Ext.']")).getAttribute("value");
+        driver.findElement(By.xpath("//button[text()='Back to list']")).click();
+
+        driver.findElement(By.xpath("//label[text()='Search...']/following-sibling::div/input")).click();
+        driver.findElement(By.xpath("//button[text()='Email/Phone']")).click();
+        driver.findElement(By.xpath("//label[text()='Search...']/following-sibling::div/input")).sendKeys(phoneNumber + Keys.ENTER);
+        driver.findElement(By.xpath("//div[text()='Non staff']")).click();
+        Thread.sleep(2000);
+        String phoneExpecte = "+1 "+phoneNumber;
+        String actualPhoneNumber=driver.findElement(By.xpath("//div[@data-field='phone' and @role='cell']/div")).getText();
+
+        Assert.assertEquals(actualPhoneNumber,phoneExpecte);
+    }
+
+    @Test
+    public void createDriverEmailTestPositive() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id='login-form']/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+        // CLICK IN EMAIL + TO ADD EMAIL
+        driver.findElement(By.xpath("//p[text()='Email']/following-sibling::*[1]")).click();
+
+        String emailUser = CommonMethods.generateRamdomEmail();
+        driver.findElement(By.xpath("//input[@placeholder='Email']")).sendKeys(emailUser);
+
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//button[text()='Create new']")).click();
+        driver.findElement(By.xpath("//button[text()='Go to Edit']")).click();
+
+        String expectedEmail = driver.findElement(By.xpath("//input[@placeholder='Email']")).getAttribute("value");
+        driver.findElement(By.xpath("//button[text()='Back to list']")).click();
+
+        driver.findElement(By.xpath("//label[text()='Search...']/following-sibling::div/input")).click();
+        driver.findElement(By.xpath("//button[text()='Email/Phone']")).click();
+        driver.findElement(By.xpath("//label[text()='Search...']/following-sibling::div/input")).sendKeys(emailUser + Keys.ENTER);
+        driver.findElement(By.xpath("//div[text()='Non staff']")).click();
+
+        Assert.assertEquals(emailUser,expectedEmail);
+
     }
 }
