@@ -44,4 +44,20 @@ public class ValidateLogin extends TestBase {
         String actualResult = driver.findElement(By.xpath("//div[@role='status']")).getText();
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    @Test
+    public void validateLogOutFunctionalityTest() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/button")).click();
+        driver.findElement(By.xpath("//button[@class='MuiButtonBase-root css-4o3yyw']")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[text()='Logout']")).click();
+        Thread.sleep(1000);
+        String expectedMessage="You've been logged out!";
+        String actualMessage=driver.findElement(By.xpath("//div[@role='status']")).getText();
+        Assert.assertEquals(actualMessage,expectedMessage);
+    }
+
 }
