@@ -243,6 +243,28 @@ public class CreateNewDriver extends TestBase {
         String actualPhoneNumber = driver.findElement(By.xpath("//div[@data-field='phone' and @role='cell']/div")).getText();
         Assert.assertEquals(actualPhoneNumber, phoneExpecte);
     }
+    @Test
+    public void createDriverPhoneTestNegative() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+        driver.findElement(By.xpath("//p[text()='Phone']/following-sibling::*[1]")).click();
+        driver.findElement(By.xpath("//input[@type='tel']")).sendKeys("");
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//button[text()='Create new']")).click();
+        String actualNegativeMessage = "String must contain at least 1 character(s)";
+        String expectedNegativeMessage = driver.findElement(By.xpath("//p[text()='String must contain at least 1 character(s)']")).getText();
+        Assert.assertEquals(actualNegativeMessage, expectedNegativeMessage);
+    }
 
     @Test
     public void createDriverEmailTestPositive() throws InterruptedException {
@@ -276,6 +298,33 @@ public class CreateNewDriver extends TestBase {
         driver.findElement(By.xpath("//label[text()='Search...']/following-sibling::div/input")).sendKeys(emailUser + Keys.ENTER);
         driver.findElement(By.xpath("//div[text()='Non staff']")).click();
         Assert.assertEquals(emailUser, expectedEmail);
+    }
+    @Test
+    public void createDriverEmailTestMaxValue50() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id='login-form']/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+
+        // CLICK IN EMAIL + TO ADD EMAIL
+        driver.findElement(By.xpath("//p[text()='Email']/following-sibling::*[1]")).click();
+
+        driver.findElement(By.xpath("//input[@placeholder='Email']")).sendKeys("usernameinvalidusernameinvalidusernameinvalidusernameinvalid");
+
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//button[text()='Create new']")).click();
+        String actualMaxValueEmail = "String must contain at most 50 character(s)";
+        String expectedMaxValueEmail = driver.findElement(By.xpath("//p[text()='String must contain at most 50 character(s)']")).getText();
+        Assert.assertEquals(actualMaxValueEmail, expectedMaxValueEmail);
+
     }
 
     @Test
@@ -311,6 +360,29 @@ public class CreateNewDriver extends TestBase {
         String actualViber = driver.findElement(By.xpath("//input[@placeholder='Viber']")).getAttribute("value");
         Assert.assertEquals(actualViber, expectedViber);
     }
+    @Test
+    public void createDriverViberTestMinValue() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+        driver.findElement(By.xpath("//p[text()='Viber']/following-sibling::button[1]")).click();
+
+        driver.findElement(By.xpath("//input[@placeholder='Viber']")).sendKeys("");
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//button[text()='Create new']")).click();
+        String actualMessageMinValueViber = "String must contain at least 1 character(s)";
+        String expectedMessageMinValueViber = driver.findElement(By.xpath("//p[text()='String must contain at least 1 character(s)']")).getText();
+
+    }
 
     @Test
     public void createDriverOtherTestPositive() throws InterruptedException {
@@ -345,5 +417,4 @@ public class CreateNewDriver extends TestBase {
         String actualOther = driver.findElement(By.xpath("//input[@placeholder='Other']")).getAttribute("value");
         Assert.assertEquals(actualOther, expectedOther);
     }
-
 }
