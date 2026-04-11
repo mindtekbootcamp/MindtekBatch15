@@ -24,7 +24,7 @@ public class ValidateLogin extends TestBase {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys("abc@mindtek.com");
         driver.findElement(By.id("login-password")).sendKeys("004H78");
-        driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/button")).click();
+        driver.findElement(By.xpath("//*[@id='login-form']/div/button")).click();
 
         Thread.sleep(1000);
         String expectedResult = "Invalid username or password";
