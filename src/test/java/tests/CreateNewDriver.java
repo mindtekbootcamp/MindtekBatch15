@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.CommonMethods;
@@ -279,6 +280,33 @@ public class CreateNewDriver extends TestBase {
     }
 
     @Test
+    public void createDriverTestInvalidEmail() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id='login-form']/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+        // CLICK IN EMAIL + TO ADD EMAIL
+        driver.findElement(By.xpath("//p[text()='Email']/following-sibling::*[1]")).click();
+
+        driver.findElement(By.xpath("//input[@placeholder='Email']")).sendKeys("DanielDoe@mindtek");
+
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//button[text()='Create new']")).click();
+        String actualInvalidMessage = "Enter the correct email address";
+        String expectedInvalidMessage = driver.findElement(By.xpath("//p[text()='Enter the correct email address']")).getText();
+        Assert.assertEquals(actualInvalidMessage,expectedInvalidMessage);
+
+    }
+
+    @Test
     public void createDriverViberTestPositive() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -310,6 +338,31 @@ public class CreateNewDriver extends TestBase {
         driver.findElement(By.xpath("//div[@data-field='driver_number']/a")).click();
         String actualViber = driver.findElement(By.xpath("//input[@placeholder='Viber']")).getAttribute("value");
         Assert.assertEquals(actualViber, expectedViber);
+    }
+
+    @Test
+    public void createDriverViberTestMaxValue50() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+        driver.findElement(By.xpath("//p[text()='Viber']/following-sibling::button[1]")).click();
+
+        driver.findElement(By.xpath("//input[@placeholder='Viber']")).sendKeys("usernameinvalidusernameinvalidusernameinvalidusernameinvalid");
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//button[text()='Create new']")).click();
+
+        String actualViberMaxVal50 = "String must contain at most 50 character(s)";
+        String expectedViberMaxVal50 = driver.findElement(By.xpath("//p[text()='String must contain at most 50 character(s)']")).getText();
+        Assert.assertEquals(actualViberMaxVal50,expectedViberMaxVal50);
     }
 
     @Test
@@ -345,5 +398,49 @@ public class CreateNewDriver extends TestBase {
         String actualOther = driver.findElement(By.xpath("//input[@placeholder='Other']")).getAttribute("value");
         Assert.assertEquals(actualOther, expectedOther);
     }
+    @Test
+    public void createDriverOtherTestNegative() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+        driver.findElement(By.xpath("//p[text()='Other']/following-sibling::button[1]")).click();
+        driver.findElement(By.xpath("//input[@placeholder='Other']")).sendKeys("  ");
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//button[text()='Create new']")).click();
+        String actualOtherNeg = "String must contain at least 1 character(s)";
+        String expectedOtherNeg = driver.findElement(By.xpath("//p[text()='String must contain at least 1 character(s)']")).getText();
+        Assert.assertEquals(actualOtherNeg,expectedOtherNeg);
+    }
 
+    @Test
+    public void createDriverOtherTestMax50Value() throws InterruptedException {
+        driver.get(ConfigReader.getProperty("elarappUrl"));
+        driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
+        driver.findElement(By.id("login-password")).sendKeys(ConfigReader.getProperty("elarPassword"));
+        driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/button")).click();
+        driver.findElement(By.xpath("//a[@href='/drivers/list']")).click();
+        driver.findElement(By.xpath("//button[text()='Add driver']")).click();
+        driver.findElement(By.xpath("//input[@name='full_name']")).sendKeys("Daniel Doe");
+        driver.findElement(By.xpath("//p[text()='Other']/following-sibling::button[1]")).click();
+        driver.findElement(By.xpath("//input[@placeholder='Other']")).sendKeys("usernameinvalidusernameinvalidusernameinvalidusernameinvalid");
+        WebElement driverLicExp = driver.findElement(By.name("driving_license_exp"));
+        driverLicExp.click();
+        driverLicExp.sendKeys("07232028");
+        WebElement medicalLicExp = driver.findElement(By.name("medical_certification_exp"));
+        medicalLicExp.click();
+        medicalLicExp.sendKeys("07232028");
+        driver.findElement(By.xpath("//button[text()='Create new']")).click();
+        String expectedOtherNeg = driver.findElement(By.xpath("//p[text()='String must contain at most 50 character(s)']")).getText();
+        String actualOtherNeg = "String must contain at most 50 character(s)";
+        Assert.assertEquals(actualOtherNeg,expectedOtherNeg);
+    }
 }
