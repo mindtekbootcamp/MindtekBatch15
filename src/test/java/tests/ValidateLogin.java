@@ -59,5 +59,4 @@ public class ValidateLogin extends TestBase {
         String actualMessage=driver.findElement(By.xpath("//div[@role='status']")).getText();
         Assert.assertEquals(actualMessage,expectedMessage);
     }
-
 }
