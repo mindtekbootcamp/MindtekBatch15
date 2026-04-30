@@ -43,8 +43,17 @@ public class DriverHomePage {
     @FindBy(xpath = "//div[@role='row']/div[@data-field='driver_number' and @role='cell']/a")
     public List<WebElement> searchResultIDs;
 
-    public void selectNumberOfDriversPerPage(int number){
-        driver.findElement(By.xpath("//li[@data-value='"+number+"']")).click();
+    @FindBy(xpath = "//label[text()='Search...']/following-sibling::div/input")
+    public WebElement searchResultName;
+
+    @FindBy(xpath = "//button[text()='Add driver']")
+    public WebElement addDriverButton;
+
+    @FindBy(xpath = "//div[@data-field='full_name' and @role='cell']/div")
+    public WebElement driverNameInSearchResult;
+
+    public void selectNumberOfDriversPerPage(int number) {
+        driver.findElement(By.xpath("//li[@data-value='" + number + "']")).click();
     }
 
     public int getTotalNumberOfDrivers() {
@@ -53,36 +62,36 @@ public class DriverHomePage {
         return Integer.parseInt(numberOfDrivers);
     }
 
-    public String getLastRowIndexFromTable(){
+    public String getLastRowIndexFromTable() {
         BrowserUtils.scrollDownOnTable(driver.findElement(By.xpath("//div[@class='MuiDataGrid-virtualScroller css-1pzb349']")));
         BrowserUtils.waitElementToPresent(By.xpath("//div[@role='row' and @data-rowindex]"));
         List<WebElement> numberOfRows = driver.findElements(By.xpath("//div[@role='row' and @data-rowindex]"));
         return numberOfRows.getLast().getAttribute("data-rowindex");
     }
 
-    public List<Integer> getSearchResultIds(){
+    public List<Integer> getSearchResultIds() {
         List<Integer> searchResultIDsInt = new ArrayList<>();
-        for(WebElement element: searchResultIDs){
-            Integer id=Integer.valueOf(element.getAttribute("href").split("/")[4]);
+        for (WebElement element : searchResultIDs) {
+            Integer id = Integer.valueOf(element.getAttribute("href").split("/")[4]);
             searchResultIDsInt.add(id);
         }
         return searchResultIDsInt;
     }
 
-    public void validateSearchResultIdsSorted(String lowToHigh){
-        List<Integer> searchResultIDsInt= getSearchResultIds();
-        int firstId=searchResultIDsInt.get(0);
-        for(int index=1; index<searchResultIDsInt.size(); index++){
+    public void validateSearchResultIdsSorted(String lowToHigh) {
+        List<Integer> searchResultIDsInt = getSearchResultIds();
+        int firstId = searchResultIDsInt.get(0);
+        for (int index = 1; index < searchResultIDsInt.size(); index++) {
             int nextNum = searchResultIDsInt.get(index);
-            if(lowToHigh.equalsIgnoreCase("low to high"))
-                Assert.assertTrue(firstId<nextNum);
-            if(lowToHigh.equalsIgnoreCase("high to low"))
-                Assert.assertTrue(firstId>nextNum);
-            firstId=nextNum;
+            if (lowToHigh.equalsIgnoreCase("low to high"))
+                Assert.assertTrue(firstId < nextNum);
+            if (lowToHigh.equalsIgnoreCase("high to low"))
+                Assert.assertTrue(firstId > nextNum);
+            firstId = nextNum;
         }
     }
 
-    public void validateLowToHighIsSelectedByDefault(){
+    public void validateLowToHighIsSelectedByDefault() {
         Assert.assertTrue(sortinBtnDefault.getAttribute("aria-selected").equals("true"));
     }
 
