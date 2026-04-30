@@ -244,6 +244,7 @@ public class CreateNewDriver extends TestBase {
         String actualPhoneNumber = driver.findElement(By.xpath("//div[@data-field='phone' and @role='cell']/div")).getText();
         Assert.assertEquals(actualPhoneNumber, phoneExpecte);
     }
+
     @Test
     public void createDriverPhoneTestNegative() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
@@ -300,6 +301,7 @@ public class CreateNewDriver extends TestBase {
         driver.findElement(By.xpath("//div[text()='Non staff']")).click();
         Assert.assertEquals(emailUser, expectedEmail);
     }
+
     @Test
     public void createDriverEmailTestMaxValue50() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
@@ -351,7 +353,7 @@ public class CreateNewDriver extends TestBase {
         driver.findElement(By.xpath("//button[text()='Create new']")).click();
         String actualInvalidMessage = "Enter the correct email address";
         String expectedInvalidMessage = driver.findElement(By.xpath("//p[text()='Enter the correct email address']")).getText();
-        Assert.assertEquals(actualInvalidMessage,expectedInvalidMessage);
+        Assert.assertEquals(actualInvalidMessage, expectedInvalidMessage);
 
     }
 
@@ -388,6 +390,7 @@ public class CreateNewDriver extends TestBase {
         String actualViber = driver.findElement(By.xpath("//input[@placeholder='Viber']")).getAttribute("value");
         Assert.assertEquals(actualViber, expectedViber);
     }
+
     @Test
     public void createDriverViberTestMinValue() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
@@ -434,7 +437,7 @@ public class CreateNewDriver extends TestBase {
 
         String actualViberMaxVal50 = "String must contain at most 50 character(s)";
         String expectedViberMaxVal50 = driver.findElement(By.xpath("//p[text()='String must contain at most 50 character(s)']")).getText();
-        Assert.assertEquals(actualViberMaxVal50,expectedViberMaxVal50);
+        Assert.assertEquals(actualViberMaxVal50, expectedViberMaxVal50);
     }
 
     @Test
@@ -470,6 +473,7 @@ public class CreateNewDriver extends TestBase {
         String actualOther = driver.findElement(By.xpath("//input[@placeholder='Other']")).getAttribute("value");
         Assert.assertEquals(actualOther, expectedOther);
     }
+
     @Test
     public void createDriverOtherTestNegative() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
@@ -490,7 +494,7 @@ public class CreateNewDriver extends TestBase {
         driver.findElement(By.xpath("//button[text()='Create new']")).click();
         String actualOtherNeg = "String must contain at least 1 character(s)";
         String expectedOtherNeg = driver.findElement(By.xpath("//p[text()='String must contain at least 1 character(s)']")).getText();
-        Assert.assertEquals(actualOtherNeg,expectedOtherNeg);
+        Assert.assertEquals(actualOtherNeg, expectedOtherNeg);
     }
 
     @Test
@@ -513,6 +517,8 @@ public class CreateNewDriver extends TestBase {
         driver.findElement(By.xpath("//button[text()='Create new']")).click();
         String expectedOtherNeg = driver.findElement(By.xpath("//p[text()='String must contain at most 50 character(s)']")).getText();
         String actualOtherNeg = "String must contain at most 50 character(s)";
-        Assert.assertEquals(actualOtherNeg,expectedOtherNeg);
+        Assert.assertEquals(actualOtherNeg, expectedOtherNeg);
     }
+
+
 }

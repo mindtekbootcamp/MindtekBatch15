@@ -13,6 +13,11 @@ public class BrowserUtils {
         js.executeScript("arguments[0].scrollTop=arguments[0].scrollHeight",element);
     }
 
+    public static void scrollUpOnPage(){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollTo(0, 0);");
+    }
+
     public static void waitElementToPresent (By element){
         WebDriverWait wait=new WebDriverWait(Driver.getDriver(),10);
         wait.until(ExpectedConditions.presenceOfElementLocated(element));

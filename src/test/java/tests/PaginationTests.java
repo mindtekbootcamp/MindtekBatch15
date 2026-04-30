@@ -17,7 +17,7 @@ public class PaginationTests extends TestBase {
         };
     }
 
-    @Test(dataProvider = "paginationTestData")
+    @Test(dataProvider = "paginationTestData", groups = {"regression", "smoke"})
     public void paginationTest(int numberOfDriversPerPage) {
         // 1. Navigate to Elar App
         System.out.println("1. Navigate to Elar App");
