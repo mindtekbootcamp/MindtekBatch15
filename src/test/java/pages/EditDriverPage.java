@@ -37,4 +37,7 @@ public class EditDriverPage {
     @FindBy(xpath = "//input[@name='full_name']/../following-sibling::p")
     public WebElement nameErrorMessage;
 
+        @FindBy(xpath = "//div/h6[text()='Medical cert document']/following-sibling::label")
+        public  WebElement addMCDocument;
+
 }
