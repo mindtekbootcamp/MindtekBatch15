@@ -12,7 +12,7 @@ import utils.TestBase;
 
 public class CreateNewDriver extends TestBase {
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void createDriverAsStaffTest() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -45,7 +45,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualDriverId, driverId);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverAsNonStaffTest() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -78,7 +78,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualDriverId, driverId);
     }
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void createDriverWithInvalidNameMoreThan50Chars() {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -99,7 +99,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverWithValidNameMinChars() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -133,7 +133,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualDriverId, driverId);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverWithNoNameTest() {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -154,7 +154,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverWithSpecialCharsNameTest() {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -175,7 +175,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void createDriverLocalTestPositive() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -211,7 +211,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualSelectedState, selectedState);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverPhoneTestPositive() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -245,7 +245,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualPhoneNumber, phoneExpecte);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverPhoneTestNegative() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -268,7 +268,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualNegativeMessage, expectedNegativeMessage);
     }
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void createDriverEmailTestPositive() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -302,7 +302,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(emailUser, expectedEmail);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverEmailTestMaxValue50() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -330,7 +330,7 @@ public class CreateNewDriver extends TestBase {
 
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverTestInvalidEmail() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -357,7 +357,7 @@ public class CreateNewDriver extends TestBase {
 
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverViberTestPositive() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -391,7 +391,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualViber, expectedViber);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverViberTestMinValue() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -415,7 +415,7 @@ public class CreateNewDriver extends TestBase {
 
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverViberTestMaxValue50() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -440,7 +440,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualViberMaxVal50, expectedViberMaxVal50);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverOtherTestPositive() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -474,7 +474,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualOther, expectedOther);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverOtherTestNegative() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -497,7 +497,7 @@ public class CreateNewDriver extends TestBase {
         Assert.assertEquals(actualOtherNeg, expectedOtherNeg);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void createDriverOtherTestMax50Value() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));

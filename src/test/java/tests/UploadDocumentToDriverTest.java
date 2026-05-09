@@ -20,7 +20,7 @@ public class UploadDocumentToDriverTest extends TestBase {
 
     String path = System.getProperty("user.dir")+"/src/test/resources/testdata/Screenshot.png";
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void uploadDocumentDownloadToDriverTest() throws AWTException, InterruptedException {
         commonSteps();
         // 10. Download file and validate it is downloaded
@@ -30,7 +30,7 @@ public class UploadDocumentToDriverTest extends TestBase {
         Assert.assertEquals(windowIds.size(),2);
     }
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void UploadDocumentReviewToDriverTest() throws AWTException, InterruptedException {
         commonSteps();
         // 10. Preview file and validate it is previewed
@@ -40,7 +40,7 @@ public class UploadDocumentToDriverTest extends TestBase {
         Assert.assertTrue(driver.findElement(By.xpath("//img[@alt='Screenshot.png']")).isDisplayed());
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void UploadDocumentDeleteToDriverTest() throws AWTException, InterruptedException {
         commonSteps();
         // 10. Delete file and validate it is deleted

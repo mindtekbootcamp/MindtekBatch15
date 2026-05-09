@@ -3,15 +3,16 @@
     <test name="UI Automation">
         <groups>
             <run>
-                <include name="testbase"/>
                 <include name="regression"/>
             </run>
         </groups>
         <classes>
-            <class name="tests.CreateNewDriver"></class>
-            <class name="tests.PaginationTests"></class>
-            <class name="tests.SortingDriversFunctionalityTest"></class>
-            <class name="tests.ValidateLogin"></class>
+            <class name="tests.CreateNewDriver"/>
+            <class name="tests.PaginationTests"/>
+            <class name="tests.SortingDriversFunctionalityTest"/>
+            <class name="tests.ValidateLogin"/>
+            <class name="tests.EditDriverTests"/>
+            <class name="tests.UploadDocumentToDriverTest"/>
         </classes>
     </test>
     <test name="API Automation">

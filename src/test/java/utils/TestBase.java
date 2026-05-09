@@ -8,12 +8,12 @@ public class TestBase {
 
     protected WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"regression", "smoke"})
     public void setup() {
         driver = Driver.getDriver();
     }
 
-    @AfterMethod
+    @AfterMethod(groups = {"regression", "smoke"})
     public void teardown() {
          driver.quit();
     }
