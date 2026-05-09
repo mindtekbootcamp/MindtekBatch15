@@ -8,7 +8,7 @@ import utils.TestBase;
 
 public class SortingDriversFunctionalityTest extends TestBase {
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void sortingDriversByDefaultLowToHighTest() {
 
         // 1-Navigate to elar app
@@ -38,7 +38,7 @@ public class SortingDriversFunctionalityTest extends TestBase {
         driverHomePage.validateSearchResultIdsSorted("low to high");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void sortingDriversHighToLowTest() throws InterruptedException {
 
         // 1-Navigate to elar app

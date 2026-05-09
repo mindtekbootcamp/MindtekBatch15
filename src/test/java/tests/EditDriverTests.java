@@ -13,7 +13,7 @@ import utils.TestBase;
 
 public class EditDriverTests extends TestBase {
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void EditDriverTest() throws InterruptedException {
         // 1. Navigate to Elar App
         System.out.println("1. Navigate to Elar App");
@@ -77,7 +77,7 @@ public class EditDriverTests extends TestBase {
         Assert.assertEquals(actualDriverName, driverName);
     }
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void EditDriverTestNegative() throws InterruptedException {
         // 1. Navigate to Elar App
         System.out.println("1. Navigate to Elar App");

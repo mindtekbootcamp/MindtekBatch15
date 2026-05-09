@@ -8,7 +8,7 @@ import utils.TestBase;
 
 public class ValidateLogin extends TestBase {
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void verifyLogin(){
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
@@ -19,7 +19,7 @@ public class ValidateLogin extends TestBase {
         String expectedResult = "Users";
         Assert.assertEquals(actualResult, expectedResult);
     }
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void verifyInvalidLogin() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys("abc@mindtek.com");
@@ -32,7 +32,7 @@ public class ValidateLogin extends TestBase {
         Assert.assertEquals(actualResult, expectedResult);
 
     }
-    @Test
+    @Test(groups = {"regression"})
     public void verifyInvalidLoginPass() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys("student@mindtek.com");
@@ -45,7 +45,7 @@ public class ValidateLogin extends TestBase {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void validateLogOutFunctionalityTest() throws InterruptedException {
         driver.get(ConfigReader.getProperty("elarappUrl"));
         driver.findElement(By.id("login-username")).sendKeys(ConfigReader.getProperty("elarUsername"));
