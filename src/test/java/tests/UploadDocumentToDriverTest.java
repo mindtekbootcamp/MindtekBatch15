@@ -18,7 +18,8 @@ import java.util.Set;
 
 public class UploadDocumentToDriverTest extends TestBase {
 
-    String path = System.getProperty("user.dir")+"/src/test/resources/testdata/Screenshot.png";
+    String path = System.getProperty("user.dir") + "/src/test/resources/testdata/Screenshot.png";
+    String pathError = System.getProperty("user.dir") + "/src/test/resources/testdata/video.MOV.";
 
     @Test(groups = {"regression", "smoke"})
     public void uploadDocumentDownloadToDriverTest() throws AWTException, InterruptedException {
@@ -26,8 +27,8 @@ public class UploadDocumentToDriverTest extends TestBase {
         // 10. Download file and validate it is downloaded
         System.out.println("10. Download file and validate it is downloaded");
         driver.findElement(By.xpath("//button[@title='Download']")).click();
-        Set<String> windowIds=driver.getWindowHandles();
-        Assert.assertEquals(windowIds.size(),2);
+        Set<String> windowIds = driver.getWindowHandles();
+        Assert.assertEquals(windowIds.size(), 2);
     }
 
     @Test(groups = {"regression", "smoke"})
@@ -48,11 +49,42 @@ public class UploadDocumentToDriverTest extends TestBase {
         driver.findElement(By.xpath("//button[@title='Delete']")).click();
         driver.findElement(By.xpath("//button[text()='Confirm']")).click();
         Thread.sleep(1000);
-        String numberOfDocs=driver.findElement(By.xpath("//h6[text()='Medical cert document']/following-sibling::p")).getText();
+        String numberOfDocs = driver.findElement(By.xpath("//h6[text()='Medical cert document']/following-sibling::p")).getText();
         Assert.assertEquals(numberOfDocs, "0 out of 10");
     }
 
+    @Test
+    public void uploadDocumentBigSizeDriverTestError() throws AWTException, InterruptedException {
+        createDriverAndClickUploadDocument();
+        // 9. Upload big file
+        System.out.println("9. Upload big file");
+        String bigFilePath = System.getProperty("user.dir") + "/src/test/resources/testdata/capitanamerica.mkv";
+        WebElement upload = driver.findElement(By.xpath("//input[@type='file']"));
+        upload.sendKeys(bigFilePath);
+        Thread.sleep(3000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_ESCAPE);
+        robot.keyRelease(KeyEvent.VK_ESCAPE);
+        Thread.sleep(3000);
+        String expectedErrorMessage = "Error occurred during file upload";
+        String actualErrorMessage = driver.findElement(By.xpath("")).getText();
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
+
     public void commonSteps() throws InterruptedException, AWTException {
+        createDriverAndClickUploadDocument();
+        // 9. Upload file
+        System.out.println("9. Upload file");
+        WebElement upload = driver.findElement(By.xpath("//input[@type='file']"));
+        upload.sendKeys(path);
+        Thread.sleep(3000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_ESCAPE);
+        robot.keyRelease(KeyEvent.VK_ESCAPE);
+        Thread.sleep(3000);
+    }
+
+    private void createDriverAndClickUploadDocument() {
         // 1. Navigate to Elar App
         System.out.println("1. Navigate to Elar App");
         driver.get(ConfigReader.getProperty("elarappUrl"));
@@ -93,17 +125,5 @@ public class UploadDocumentToDriverTest extends TestBase {
         System.out.println("8. click on Medical cert Document Add Document");
         EditDriverPage editDriverPage = new EditDriverPage();
         editDriverPage.addMCDocument.click();
-
-        // 9. Upload file
-        System.out.println("9. Upload file");
-        WebElement upload = driver.findElement(By.xpath("//input[@type='file']"));
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].style.visibility='visible'; arguments[0].style.display='block';", upload);
-        upload.sendKeys(path);
-        Thread.sleep(3000);
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_ESCAPE);
-        robot.keyRelease(KeyEvent.VK_ESCAPE);
-        Thread.sleep(3000);
     }
 }
