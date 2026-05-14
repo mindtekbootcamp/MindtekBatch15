@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3114ae36-4a59-4f82-a36e-6dd571e110df" name="Changes" comment="State field test scenario is automated.">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tests/CreateDriverWithAPITest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/configurations/Configuration.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/configurations/Configuration.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="arslan_branch" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SSolomiia&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/mindtekbootcamp/MindtekBatch15.git&quot;,
+    &quot;accountId&quot;: &quot;3803dff4-42c1-4065-bc11-a72b7fae2b4a&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3BSRl7cVupDYadocUZakEq5qvQ9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TestNG.CreateDriverWithAPITest.CreateDriverWithAPIOneLetterName.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.CreateDriverWithAPITest.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.createDriverWithAPITest.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.executor": "Run",
+    "TestNG.CreateNewDriver.createDriverAsStaffTest.executor": "Debug",
+    "TestNG.CreateNewDriver.createDriverLocalTestPositive.executor": "Run",
+    "TestNG.CreateNewDriver.createDriverWithInvalidNameMoreThan50Chars.executor": "Run",
+    "TestNG.CreateNewDriver.createDriverWithNoNameTest.executor": "Run",
+    "TestNG.EditDriverClass.EditDriverTest.executor": "Run",
+    "TestNG.UploadDocumentToDriverTest.executor": "Run",
+    "TestNG.UploadDocumentToDriverTest.uploadDocumentDownloadToDriverTest.executor": "Run",
+    "TestNG.ValidateLogin.executor": "Run",
+    "git-widget-placeholder": "SolomiiaBranch",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.CreateDriverWithAPITest">
+    <configuration name="CreateDriverWithAPITest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="MindtekBatch15" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CreateDriverWithAPITest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateDriverWithAPITest.CreateDriverWithAPIOneLetterName" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="MindtekBatch15" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CreateDriverWithAPITest" />
+      <option name="METHOD_NAME" value="CreateDriverWithAPIOneLetterName" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateDriverWithAPITest.CreateDriverWithAPITest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="MindtekBatch15" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CreateDriverWithAPITest" />
+      <option name="METHOD_NAME" value="CreateDriverWithAPITest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateDriverWithAPITest.createDriverWithAPITest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="MindtekBatch15" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CreateDriverWithAPITest" />
+      <option name="METHOD_NAME" value="createDriverWithAPITest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UploadDocumentToDriverTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="MindtekBatch15" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.UploadDocumentToDriverTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.CreateDriverWithAPITest" />
+        <item itemvalue="TestNG.CreateDriverWithAPITest.CreateDriverWithAPIOneLetterName" />
+        <item itemvalue="TestNG.CreateDriverWithAPITest.CreateDriverWithAPITest" />
+        <item itemvalue="TestNG.CreateDriverWithAPITest.createDriverWithAPITest" />
+        <item itemvalue="TestNG.UploadDocumentToDriverTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3114ae36-4a59-4f82-a36e-6dd571e110df" name="Changes" comment="" />
+      <created>1774480633153</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1774480633153</updated>
+    </task>
+    <task id="LOCAL-00001" summary="State field test scenario is automated.">
+      <option name="closed" value="true" />
+      <created>1774488441665</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1774488441665</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="State field test scenario is automated." />
+    <option name="LAST_COMMIT_MESSAGE" value="State field test scenario is automated." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/tests/CreateNewDriver.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/tests/CreateDriverWithAPITest.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
