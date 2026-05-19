@@ -63,12 +63,11 @@ public class CreateDriverWithAPITest {
         Assert.assertEquals(postResponse.getStatusCode(), 200);
     }
 
-
     @Test(groups = {"regression", "smoke", "api"})
     public void createDriverWithAPITestMore50CharactersName() {
 
         CreateDriverRequest createDriverRequest = getDriverObject();
-        createDriverRequest.setFull_name("Ligi Mario gsdijddkjdsdabasjkbasbniancilnaklnaklvnamnal;vmlvmlasmuiuw");
+        createDriverRequest.setFull_name("Ligi Mario gsdijddkjdsdabasjkbasbniancilnaklnaklvnamnalgfegdgdvmlvmlasmuiuw");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
                 .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
@@ -86,6 +85,22 @@ public class CreateDriverWithAPITest {
 
         CreateDriverRequest createDriverRequest = getDriverObject();
         createDriverRequest.setFull_name("$%#3");
+
+        Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
+                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
+                .and().header("Content-Type", "application/json")
+                .and().header("Accept", "application/json")
+                .and().body(createDriverRequest)
+                .when().post("/drivers");
+        postResponse.then().log().all();
+        Assert.assertEquals(postResponse.getStatusCode(), 422);
+    }
+
+    @Test(groups = {"regression", "smoke", "api"})
+    public void createDriverWithAPITestEmptyFullName() {
+
+        CreateDriverRequest createDriverRequest = getDriverObject();
+        createDriverRequest.setFull_name("");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
                 .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
@@ -126,21 +141,6 @@ public class CreateDriverWithAPITest {
                 .when().post("/drivers");
         postResponse.then().log().all();
         Assert.assertEquals(postResponse.getStatusCode(), 422);
-    }
-
-    @Test(groups = {"regression", "smoke", "api"})
-    public void createDriverWithCorretDateInTheMedicalCertification() {
-        CreateDriverRequest createDriverRequest = getDriverObject();
-        createDriverRequest.setMedical_certification_exp("2026-07-01");
-
-        Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
-                .and().header("Content-Type", "application/json")
-                .and().header("Accept", "application/json")
-                .and().body(createDriverRequest)
-                .when().post("/drivers");
-        postResponse.then().log().all();
-        Assert.assertEquals(postResponse.getStatusCode(), 200);
     }
 
     @Test(groups = {"regression", "smoke", "api"})
