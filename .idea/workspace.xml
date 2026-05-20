@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3114ae36-4a59-4f82-a36e-6dd571e110df" name="Changes" comment="" />
+    <list default="true" id="3114ae36-4a59-4f82-a36e-6dd571e110df" name="Changes" comment="create">
+      <change afterPath="$PROJECT_DIR$/src/test/java/pojos/CreateDriverRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pojos/CreateDriverResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/CreateDriverWithAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/CreateDriverWithAPITest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,41 +52,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TestNG.CreateDriverWithAPITest.CreateDriverWithAPIOneLetterName.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.CreateDriverWithAPITest.CreateDriverWithAPITest.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.CreateDriverWithAPITest.createDriverWithAPITest.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.CreateDriverWithAPITest.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.CreateNewDriver.createDriverAsStaffTest.executor&quot;: &quot;Debug&quot;,
-    &quot;TestNG.CreateNewDriver.createDriverLocalTestPositive.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.CreateNewDriver.createDriverWithInvalidNameMoreThan50Chars.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.CreateNewDriver.createDriverWithNoNameTest.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.EditDriverClass.EditDriverTest.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.UploadDocumentToDriverTest.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.UploadDocumentToDriverTest.uploadDocumentDownloadToDriverTest.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.ValidateLogin.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;SolomiiaBranch&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TestNG.CreateDriverWithAPIPositiveTest.CreateDriverWithAPITest.executor": "Run",
+    "TestNG.CreateDriverWithAPIPositiveTest.createDriverWithAPIPositiveTest.executor": "Run",
+    "TestNG.CreateDriverWithAPIPositiveTest.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.CreateDriverWithAPIOneLetterName.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.CreateDriverWithAPITest.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.CreateDriverWithAPITestMore50CharactersName.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.CreateDriverWithAPITestPositive.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.CreateDriverWithAPITestWithEspecialCharacters.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.createDriverWithAPIPositiveTest.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.createDriverWithAPITest.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.createDriverWithIncorrectDataInTheDriverLicense.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.createDriverWithIncorrectDataInTheMedicalCertification.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.createDriverWithIncorrectDataIntheDriverLicense.executor": "Run",
+    "TestNG.CreateDriverWithAPITest.executor": "Run",
+    "TestNG.CreateNewDriver.createDriverAsStaffTest.executor": "Debug",
+    "TestNG.CreateNewDriver.createDriverLocalTestPositive.executor": "Run",
+    "TestNG.CreateNewDriver.createDriverWithInvalidNameMoreThan50Chars.executor": "Run",
+    "TestNG.CreateNewDriver.createDriverWithNoNameTest.executor": "Run",
+    "TestNG.EditDriverClass.EditDriverTest.executor": "Run",
+    "TestNG.UploadDocumentToDriverTest.executor": "Run",
+    "TestNG.UploadDocumentToDriverTest.uploadDocumentDownloadToDriverTest.executor": "Run",
+    "TestNG.ValidateLogin.executor": "Run",
+    "git-widget-placeholder": "SolomiiaBranch",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.CreateDriverWithAPITest">
+  <component name="RunManager" selected="TestNG.CreateDriverWithAPITest.CreateDriverWithAPITestPositive">
     <configuration name="CreateDriverWithAPITest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MindtekBatch15" />
       <extension name="coverage">
@@ -98,7 +114,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateDriverWithAPITest.CreateDriverWithAPIOneLetterName" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateDriverWithAPITest.CreateDriverWithAPITestMore50CharactersName" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MindtekBatch15" />
       <extension name="coverage">
         <pattern>
@@ -108,7 +124,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.CreateDriverWithAPITest" />
-      <option name="METHOD_NAME" value="CreateDriverWithAPIOneLetterName" />
+      <option name="METHOD_NAME" value="CreateDriverWithAPITestMore50CharactersName" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -116,7 +132,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateDriverWithAPITest.CreateDriverWithAPITest" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateDriverWithAPITest.CreateDriverWithAPITestPositive" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MindtekBatch15" />
       <extension name="coverage">
         <pattern>
@@ -126,7 +142,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.CreateDriverWithAPITest" />
-      <option name="METHOD_NAME" value="CreateDriverWithAPITest" />
+      <option name="METHOD_NAME" value="CreateDriverWithAPITestPositive" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -134,7 +150,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreateDriverWithAPITest.createDriverWithAPITest" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateDriverWithAPITest.createDriverWithIncorrectDataInTheDriverLicense" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MindtekBatch15" />
       <extension name="coverage">
         <pattern>
@@ -144,7 +160,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.CreateDriverWithAPITest" />
-      <option name="METHOD_NAME" value="createDriverWithAPITest" />
+      <option name="METHOD_NAME" value="createDriverWithIncorrectDataInTheDriverLicense" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -152,7 +168,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UploadDocumentToDriverTest" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="CreateDriverWithAPITest.createDriverWithIncorrectDataInTheMedicalCertification" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="MindtekBatch15" />
       <extension name="coverage">
         <pattern>
@@ -161,8 +177,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.UploadDocumentToDriverTest" />
-      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="MAIN_CLASS_NAME" value="tests.CreateDriverWithAPITest" />
+      <option name="METHOD_NAME" value="createDriverWithIncorrectDataInTheMedicalCertification" />
+      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -171,11 +188,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.CreateDriverWithAPITest.CreateDriverWithAPITestPositive" />
         <item itemvalue="TestNG.CreateDriverWithAPITest" />
-        <item itemvalue="TestNG.CreateDriverWithAPITest.CreateDriverWithAPIOneLetterName" />
-        <item itemvalue="TestNG.CreateDriverWithAPITest.CreateDriverWithAPITest" />
-        <item itemvalue="TestNG.CreateDriverWithAPITest.createDriverWithAPITest" />
-        <item itemvalue="TestNG.UploadDocumentToDriverTest" />
+        <item itemvalue="TestNG.CreateDriverWithAPITest.createDriverWithIncorrectDataInTheDriverLicense" />
+        <item itemvalue="TestNG.CreateDriverWithAPITest.createDriverWithIncorrectDataInTheMedicalCertification" />
+        <item itemvalue="TestNG.CreateDriverWithAPITest.CreateDriverWithAPITestMore50CharactersName" />
       </list>
     </recent_temporary>
   </component>
@@ -195,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774488441665</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="create">
+      <option name="closed" value="true" />
+      <created>1778721071465</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1778721071465</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,7 +236,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="State field test scenario is automated." />
-    <option name="LAST_COMMIT_MESSAGE" value="State field test scenario is automated." />
+    <MESSAGE value="create" />
+    <option name="LAST_COMMIT_MESSAGE" value="create" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -220,11 +246,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/tests/CreateNewDriver.java</url>
           <line>23</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/tests/CreateDriverWithAPITest.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
