@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class DriverRsponse {
+public class DriverResponse {
 
     private String uuid;
     private Integer id;
@@ -31,5 +31,6 @@ public class DriverRsponse {
     private String driving_license_exp;
     private String medical_certification_exp;
     private String driver_number;
+    private List<String> alerts;
 
 }

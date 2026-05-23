@@ -19,6 +19,8 @@ import static io.restassured.RestAssured.given;
 @Setter
 public class CreateDriverWithAPITest {
 
+    String token = "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3Nzk2MzMyMjV9.ISVcdl0K8MWF0MEIzi68igDdPp3SbU8HT7kwhVvWh7s; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5NjMzMjI1fQ.4vzrHCXqfoW5zQQeI-UJiSX9uKzzk5yD7VgGPY_7B5U";
+
     public CreateDriverRequest getDriverObject() {
         CreateDriverRequest createDriverRequest = new CreateDriverRequest();
 
@@ -53,7 +55,7 @@ public class CreateDriverWithAPITest {
 
         CreateDriverRequest createDriverRequest = getDriverObject();
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -63,14 +65,14 @@ public class CreateDriverWithAPITest {
         Assert.assertEquals(postResponse.getStatusCode(), 200);
     }
 
-    @Test(groups = {"regression", "smoke", "api"})
+    @Test(groups = {"regression", "api"})
     public void createDriverWithAPITestOneLetterName() {
 
         CreateDriverRequest createDriverRequest = getDriverObject();
         createDriverRequest.setFull_name("l");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -79,14 +81,14 @@ public class CreateDriverWithAPITest {
         Assert.assertEquals(postResponse.getStatusCode(), 200);
     }
 
-    @Test(groups = {"regression", "smoke", "api"})
+    @Test(groups = {"regression", "api"})
     public void createDriverWithAPITestMore50CharactersName() {
 
         CreateDriverRequest createDriverRequest = getDriverObject();
         createDriverRequest.setFull_name("Ligi Mario gsdijddkjdsdabasjkbasbniancilnaklnaklvnamnalgfegdgdvmlvmlasmuiuw");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -103,7 +105,7 @@ public class CreateDriverWithAPITest {
         createDriverRequest.setFull_name("$%#3");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -112,14 +114,14 @@ public class CreateDriverWithAPITest {
         Assert.assertEquals(postResponse.getStatusCode(), 422);
     }
 
-    @Test(groups = {"regression", "smoke", "api"})
+    @Test(groups = {"regression",  "api"})
     public void createDriverWithAPITestEmptyFullName() {
 
         CreateDriverRequest createDriverRequest = getDriverObject();
         createDriverRequest.setFull_name("");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkzMjI5NDh9.n6EwBYYRxT7dssqvmqxmpSC6H32qUoz02qU04tPloVE; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MzIyOTQ4fQ.u8IlS3rnMo3Gyz9h8SERJPJVDUcZ0v7smZ0IId9YUTs")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -134,7 +136,7 @@ public class CreateDriverWithAPITest {
         createDriverRequest.setDriving_license_exp("2025-06-06");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -144,13 +146,13 @@ public class CreateDriverWithAPITest {
     }
 
 
-    @Test(groups = {"regression", "smoke", "api"})
+    @Test(groups = {"regression", "api"})
     public void createDriverWithEmptyDateInTheDriverLicense() {
         CreateDriverRequest createDriverRequest = getDriverObject();
         createDriverRequest.setDriving_license_exp("");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkzMjI5NDh9.n6EwBYYRxT7dssqvmqxmpSC6H32qUoz02qU04tPloVE; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MzIyOTQ4fQ.u8IlS3rnMo3Gyz9h8SERJPJVDUcZ0v7smZ0IId9YUTs")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -159,13 +161,13 @@ public class CreateDriverWithAPITest {
         Assert.assertEquals(postResponse.getStatusCode(), 422);
     }
 
-    @Test(groups = {"regression", "smoke", "api"})
-    public void createDriverWithIncorretDateInTheMedicalCertification() {
+    @Test(groups = {"regression", "api"})
+    public void createDriverWithIncorrectDateInTheMedicalCertification() {
         CreateDriverRequest createDriverRequest = getDriverObject();
         createDriverRequest.setMedical_certification_exp("2025-06-06");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3NzkwMjg5ODV9.4vw7Gr9H4FYtpYV7iMVxUg-RrhmpGtFkSWl_gpmkeSM; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5MDI4OTg1fQ.4hfqq6MDfg_IesmXrL5G6C5UoTFnBW_KFrpumzVY0bE")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -175,13 +177,13 @@ public class CreateDriverWithAPITest {
     }
 
 
-    @Test(groups = {"regression", "smoke", "api"})
+    @Test(groups = {"regression", "api"})
     public void createDriverWithEmptyDateInTheMedicalCertification() {
         CreateDriverRequest createDriverRequest = getDriverObject();
         createDriverRequest.setMedical_certification_exp("");
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3Nzk0OTI4NzV9.6swRGysNFnsY5swgur2jbKdr3QI7q7ZPRfyCqRS1o-c; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5NDkyODc1fQ.Fr1FdjsMsPATMtkCQQ7Bcq3JykZrb2OkWnkMAdoUWgs")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -206,7 +208,7 @@ public class CreateDriverWithAPITest {
         updateDriverRequest.setFull_name(expectedName);
 
         Response putResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3Nzk0OTI4NzV9.6swRGysNFnsY5swgur2jbKdr3QI7q7ZPRfyCqRS1o-c; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5NDkyODc1fQ.Fr1FdjsMsPATMtkCQQ7Bcq3JykZrb2OkWnkMAdoUWgs")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(updateDriverRequest)
@@ -223,7 +225,7 @@ public class CreateDriverWithAPITest {
         CreateDriverRequest createDriverRequest = getDriverObject();
 
         Response postResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
-                .and().headers("Cookie", "Access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJBY2Nlc3MiLCJhbGciOiJIUzI1NiJ9LCJleHAiOjE3Nzk0OTI4NzV9.6swRGysNFnsY5swgur2jbKdr3QI7q7ZPRfyCqRS1o-c; Refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHVkZW50QG1pbmR0ZWsuY29tIiwiaGVhZGVyIjp7InR5cGUiOiJSZWZyZXNoIiwiYWxnIjoiSFMyNTYifSwiZXhwIjoxNzc5NDkyODc1fQ.Fr1FdjsMsPATMtkCQQ7Bcq3JykZrb2OkWnkMAdoUWgs")
+                .and().headers("Cookie", token)
                 .and().header("Content-Type", "application/json")
                 .and().header("Accept", "application/json")
                 .and().body(createDriverRequest)
@@ -231,4 +233,116 @@ public class CreateDriverWithAPITest {
         postResponse.then().log().all();
         return postResponse;
     }
+
+
+    @Test(groups = {"regression", "smoke", "api"})
+    public void updateDriverWithEmptyName() {
+        // 1. Create driver
+        Response createDriverResponse=createDriver();
+        DriverResponse responseObject=createDriverResponse.body().as(DriverResponse.class);
+        Integer driverId = responseObject.getId();
+
+        // 2. Update Driver
+        UpdateDriverRequest updateDriverRequest = getUpdateDriverObject();
+        updateDriverRequest.setId(driverId);
+        String expectedName=""+new Random().nextInt();
+        updateDriverRequest.setFull_name(expectedName);
+
+        Response putResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
+                .and().headers("Cookie", token)
+                .and().header("Content-Type", "application/json")
+                .and().header("Accept", "application/json")
+                .and().body(updateDriverRequest)
+                .when().put("/drivers/" + driverId);
+
+        putResponse.then().log().all();
+        // 3. Validate driver name is updated and response has 200 status code
+        Assert.assertEquals(putResponse.getStatusCode(), 422);
+        String actualName = putResponse.body().jsonPath().getString("full_name");
+        Assert.assertEquals(actualName,expectedName);
+    }
+
+    @Test(groups = {"regression", "api"})
+    public void updateDriverWithNameMore50Characters() {
+        // 1. Create driver
+        Response createDriverResponse=createDriver();
+        DriverResponse responseObject=createDriverResponse.body().as(DriverResponse.class);
+        Integer driverId = responseObject.getId();
+
+        // 2. Update Driver
+        UpdateDriverRequest updateDriverRequest = getUpdateDriverObject();
+        updateDriverRequest.setId(driverId);
+        String expectedName="qwertyuioppoiuytrewqqwertyuioppoiuytrewqwertyuioppoiuytrewqqwertyuiop"+new Random().nextInt();
+        updateDriverRequest.setFull_name(expectedName);
+
+        Response putResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
+                .and().headers("Cookie", token)
+                .and().header("Content-Type", "application/json")
+                .and().header("Accept", "application/json")
+                .and().body(updateDriverRequest)
+                .when().put("/drivers/" + driverId);
+
+        putResponse.then().log().all();
+        // 3. Validate driver name is updated and response has 200 status code
+        Assert.assertEquals(putResponse.getStatusCode(), 422);
+        String expectedErrorMessage="String should have at most 50 characters";
+        String errorMessage = putResponse.body().jsonPath().getString("detail[0].msg");
+        Assert.assertEquals(errorMessage,expectedErrorMessage);
+    }
+
+
+
+    @Test(groups = {"regression", "api"})
+    public void updateDriverWithNameMinCharacters() {
+        // 1. Create driver
+        Response createDriverResponse=createDriver();
+        DriverResponse responseObject=createDriverResponse.body().as(DriverResponse.class);
+        Integer driverId = responseObject.getId();
+
+        // 2. Update Driver
+        UpdateDriverRequest updateDriverRequest = getUpdateDriverObject();
+        updateDriverRequest.setId(driverId);
+        String expectedName="S";
+        updateDriverRequest.setFull_name(expectedName);
+
+        Response putResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
+                .and().headers("Cookie", token)
+                .and().header("Content-Type", "application/json")
+                .and().header("Accept", "application/json")
+                .and().body(updateDriverRequest)
+                .when().put("/drivers/" + driverId);
+
+        putResponse.then().log().all();
+        // 3. Validate driver name is updated and response has 200 status code
+        Assert.assertEquals(putResponse.getStatusCode(), 200);
+        String actualName = putResponse.body().jsonPath().getString("full_name");
+        Assert.assertEquals(actualName,expectedName);
+    }
+
+    @Test(groups = {"regression", "smoke", "api"})
+    public void updateDriverMedical_CertificationWithWrongDate() {
+        // 1. Create driver
+        Response createDriverResponse=createDriver();
+        DriverResponse responseObject=createDriverResponse.body().as(DriverResponse.class);
+        Integer driverId = responseObject.getId();
+
+        // 2. Update Driver
+        UpdateDriverRequest updateDriverRequest = getUpdateDriverObject();
+        updateDriverRequest.setId(driverId);
+        String mExpOldDate="2025-07-01";
+        updateDriverRequest.setMedical_certification_exp(mExpOldDate);
+
+        Response putResponse = given().baseUri("https://api.app.elarlogistics.com/services/elar-saas/api/v3")
+                .and().headers("Cookie", token)
+                .and().header("Content-Type", "application/json")
+                .and().header("Accept", "application/json")
+                .and().body(updateDriverRequest)
+                .when().put("/drivers/" + driverId);
+
+        putResponse.then().log().all();
+        // 3. Validate driver name is updated and response has 200 status code
+        Assert.assertEquals(putResponse.getStatusCode(), 422);
+    }
+
+
 }
