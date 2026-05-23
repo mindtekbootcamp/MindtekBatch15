@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="MindtekBatch15">
+    <test name="UI Automation">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.CreateDriverWithAPITest"/>
+        </classes>
+    </test>
+    <test name="API Automation">
+    </test>
+    <test name="Mobile Automation">
+    </test>
+</suite>
