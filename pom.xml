@@ -68,7 +68,7 @@
                 <version>3.5.5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>regression_api_testng.xml</suiteXmlFile>
+                        <suiteXmlFile>${suite}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
